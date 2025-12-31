@@ -1,5 +1,5 @@
 
--- column active = true or false in table user
+
 
 CREATE DATABASE khatriii
 
@@ -9,6 +9,8 @@ CREATE DATABASE khatriii
         last_name VARCHAR(50) NOT NULL,
         email VARCHAR(50) NOT NULL UNIQUE,
         passowrd VARCHAR(255) NOT NULL,
+        active BOOLEAN DEFAULT FALSE,
+        count_report INT DEFAULT 0,
         create_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
 
@@ -24,12 +26,12 @@ CREATE DATABASE khatriii
         id INT AUTO_ENCREMENT PRIMARY KEY,
         id_user INT NOT NULL,
         title VARCHAR(100) NOT NULL,
-        name_author VARCHAR(50),
+        name_author VARCHAR(50) NOT NULL,
         content LONGTEXT NOT NULL,
         create_at DATETIME NOT NULL,
         category ENUM('history','philosophy','science','other') NOT NULL,
         FOREIGN KEY (id_user) REFERENCES users(id),
-        FOREIGN KEY (id_article) REFERENCES users(first_name)
+        FOREIGN KEY (name_author) REFERENCES users(first_name)
     );
 
     CREATE TABLE commentaires (
@@ -42,11 +44,21 @@ CREATE DATABASE khatriii
         FOREIGN KEY (id_reader) REFERENCES users (id)
     );
 
-    CREATE TABLE likes (
+    CREATE TABLE like_article (
         id INT AUTO_ENCREMENT PRIMARY KEY,
         id_article INT NOT NULL,
         id_reader INT NOT NULL,
         FOREIGN KEY (id_article) REFERENCES articles (id),
         FOREIGN KEY (id_reader) REFERENCES users (id)
+    );
+
+    CREATE TABLE like_commentaire (
+        id INT AUTO_ENCREMENT PRIMARY KEY,
+        id_reader INT NOT NULL,
+        id_article NOT NULL,
+        id_commentaire NOT NULL,
+        FOREIGN KEY (id_reader) REFERENCES users(id),
+        FOREIGN KEY (id_article) REFERENCES articles(id),
+        FOREIGN KEY (id_commentaire) REFERENCES commentaires(id)
     );
 
