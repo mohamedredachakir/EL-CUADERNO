@@ -25,16 +25,16 @@
         }
     </script>
     <style>
-        /* إضافة نسيج الورق القديم للخلفية بالكامل */
+       
         body {
             background-color: #f4ecd8;
-            /* نسيج ورق قديم احترافي */
+            
             background-image: url("https://www.transparenttextures.com/patterns/old-map.png");
             background-attachment: fixed;
             min-height: 100vh;
         }
 
-        /* تأثير الظل الجانبي لتبدو الصفحة كأنها داخل كتاب */
+        
         .page-texture-overlay {
             position: fixed;
             inset: 0;
@@ -43,7 +43,7 @@
             z-index: 10;
         }
 
-        /* تخصيص الروابط */
+        
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
