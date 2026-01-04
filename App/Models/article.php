@@ -10,6 +10,7 @@ class Article {
     public $id_user;
     public $title;
     public $content;
+    public $create_at;
 
     public function __construct($db)
     {
@@ -17,13 +18,14 @@ class Article {
     }
     public function createArticle() {
         $sql = "INSERT INTO {$this->table}
-        (id_user,title,content)
-        VALUES (:id_user,:title,:content)";
+        (id_user,title,content,create_at)
+        VALUES (:id_user,:title,:content,:create_at)";
         $stmt = $this->conn->prepare($sql);
         
         $stmt->bindParam(':id_user', $this->id_user);
         $stmt->bindParam(':title' , $this->title);
         $stmt->bindParam(':content' , $this->content);
+        $stmt->bindParam(':create_at', $this->create_at);
 
         return $stmt->execute();
     }
