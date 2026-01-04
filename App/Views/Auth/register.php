@@ -1,8 +1,7 @@
 <?php
 require_once __DIR__ . '/../Layouts/header.php';
 require_once __DIR__ . '/../Layouts/navbar.php';
-?>;
-
+?>
 
 <main class="relative z-20 min-h-screen flex items-center justify-center px-6 py-20">
     <div class="max-w-xl w-full">
@@ -18,21 +17,30 @@ require_once __DIR__ . '/../Layouts/navbar.php';
             </div>
 
             <form action="#" method="POST" class="space-y-6">
-                <div class="space-y-2">
-                    <label class="text-[10px] uppercase tracking-[0.3em] font-ui font-black text-gold ml-2">Full Title / Name</label>
-                    <input type="text" placeholder="e.g. Knight Rodrigo" 
-                           class="w-full bg-white/40 border border-[#2c1810]/10 rounded-xl px-5 py-4 font-book italic focus:outline-none focus:border-gold transition-all placeholder:text-ink/30">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-[0.3em] font-ui font-black text-gold ml-2">Given Name</label>
+                        <input type="text" name="first_name" placeholder="e.g. Rodrigo" 
+                               class="w-full bg-white/40 border border-[#2c1810]/10 rounded-xl px-5 py-4 font-book italic focus:outline-none focus:border-gold transition-all placeholder:text-ink/30">
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-[0.3em] font-ui font-black text-gold ml-2">House / Family</label>
+                        <input type="text" name="last_name" placeholder="e.g. De Vivar" 
+                               class="w-full bg-white/40 border border-[#2c1810]/10 rounded-xl px-5 py-4 font-book italic focus:outline-none focus:border-gold transition-all placeholder:text-ink/30">
+                    </div>
                 </div>
 
                 <div class="space-y-2">
                     <label class="text-[10px] uppercase tracking-[0.3em] font-ui font-black text-gold ml-2">Digital Dispatch (Email)</label>
-                    <input type="email" placeholder="messenger@empire.com" 
+                    <input type="email" name="email" placeholder="messenger@empire.com" 
                            class="w-full bg-white/40 border border-[#2c1810]/10 rounded-xl px-5 py-4 font-book italic focus:outline-none focus:border-gold transition-all placeholder:text-ink/30">
                 </div>
 
                 <div class="space-y-2">
                     <label class="text-[10px] uppercase tracking-[0.3em] font-ui font-black text-gold ml-2">Secret Cipher (Password)</label>
-                    <input type="password" placeholder="••••••••" 
+                    <input type="password" name="password" placeholder="••••••••" 
                            class="w-full bg-white/40 border border-[#2c1810]/10 rounded-xl px-5 py-4 font-book italic focus:outline-none focus:border-gold transition-all placeholder:text-ink/30">
                 </div>
 
@@ -51,5 +59,4 @@ require_once __DIR__ . '/../Layouts/navbar.php';
     </div>
 </main>
 
-
-<?php require_once __DIR__ . '/../Layouts/footer.php';?>
+<?php require_once __DIR__ . '/../Layouts/footer.php'; ?>
