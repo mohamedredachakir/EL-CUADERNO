@@ -14,8 +14,8 @@ session_start();
 
 $router = new Router();
 $router->get('/','HomeController@index');
-$router->get('/login' , 'AuthController@login');
+$router->get('/login' , 'AuthController@showlogin');
 $router->post('/login' , 'AuthController@login');
-$router->get('/register' , 'AuthController@register');
+$router->get('/register' , 'AuthController@showregister');
 $router->post('/register' , 'AuthController@register');
 $router->dispatch();

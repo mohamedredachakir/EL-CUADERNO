@@ -19,7 +19,7 @@ require_once __DIR__ . '/../Layouts/navbar.php';
                 <p class="font-book text-xs text-ink/50 uppercase tracking-widest">Identify yourself, Scribe</p>
             </div>
 
-            <form action="#" method="POST" class="space-y-6">
+            <form action="" method="POST" class="space-y-6">
                 <div class="space-y-2">
                     <input type="email" placeholder="Dispatch (Email)" 
                            class="w-full bg-white/40 border border-[#2c1810]/10 rounded-xl px-5 py-4 font-book italic focus:outline-none focus:border-gold transition-all placeholder:text-ink/30 text-center">
@@ -34,7 +34,7 @@ require_once __DIR__ . '/../Layouts/navbar.php';
                     <label class="flex items-center text-[10px] font-ui font-bold text-ink/50 uppercase tracking-tighter cursor-pointer">
                         <input type="checkbox" class="mr-2 accent-gold"> Remember me
                     </label>
-                    <a href="#" class="text-[10px] font-ui font-bold text-gold uppercase tracking-tighter hover:underline">Forgot Cipher?</a>
+                    <a href="" class="text-[10px] font-ui font-bold text-gold uppercase tracking-tighter hover:underline">Forgot Cipher?</a>
                 </div>
 
                 <button type="submit" class="w-full bg-[#2c1810] text-paper py-4 rounded-xl font-ui text-xs font-black uppercase tracking-[0.4em] shadow-lg hover:shadow-gold/20 transition-all">
@@ -45,7 +45,7 @@ require_once __DIR__ . '/../Layouts/navbar.php';
             <div class="mt-10 text-center border-t border-ink/5 pt-6">
                 <p class="text-[10px] font-ui font-bold uppercase tracking-[0.2em] text-ink/40">
                     New to the Empire? 
-                    <a href="register.php" class="text-gold ml-2 hover:text-ink transition-colors">Enlist Now</a>
+                    <a href="/register" class="text-gold ml-2 hover:text-ink transition-colors">Enlist Now</a>
                 </p>
             </div>
         </div>
