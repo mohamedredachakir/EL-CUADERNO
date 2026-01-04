@@ -29,8 +29,8 @@ class User {
     }
     public function create(){
         $sql = "INSERT INTO {$this->table}
-        (first_name,last_name,email,password,role)
-        VALUES (:first_name,:last_name,:email,:password,:role)";
+        (first_name,last_name,email,passowrd)
+        VALUES (:first_name,:last_name,:email,:password)";
         $stmt = $this->conn->prepare($sql);
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
 
@@ -38,7 +38,7 @@ class User {
         $stmt->bindParam(':last_name', $this->last_name);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);
-        $stmt->bindParam(':role', $this->role);
+        
 
         return $stmt->execute();
     }

@@ -21,12 +21,12 @@ require_once __DIR__ . '/../Layouts/navbar.php';
 
             <form action="" method="POST" class="space-y-6">
                 <div class="space-y-2">
-                    <input type="email" placeholder="Dispatch (Email)" 
+                    <input name = "email" type="email" placeholder="Dispatch (Email)" 
                            class="w-full bg-white/40 border border-[#2c1810]/10 rounded-xl px-5 py-4 font-book italic focus:outline-none focus:border-gold transition-all placeholder:text-ink/30 text-center">
                 </div>
 
                 <div class="space-y-2">
-                    <input type="password" placeholder="Cipher (Password)" 
+                    <input name = "password" type="password" placeholder="Cipher (Password)" 
                            class="w-full bg-white/40 border border-[#2c1810]/10 rounded-xl px-5 py-4 font-book italic focus:outline-none focus:border-gold transition-all placeholder:text-ink/30 text-center">
                 </div>
 

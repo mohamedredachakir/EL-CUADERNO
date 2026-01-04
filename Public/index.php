@@ -18,4 +18,5 @@ $router->get('/login' , 'AuthController@showlogin');
 $router->post('/login' , 'AuthController@login');
 $router->get('/register' , 'AuthController@showregister');
 $router->post('/register' , 'AuthController@register');
+$router->get('/logout' , 'AuthController@logout');
 $router->dispatch();
