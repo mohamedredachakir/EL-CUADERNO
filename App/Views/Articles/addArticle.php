@@ -14,7 +14,7 @@ require_once __DIR__ . '/../Layouts/navbar.php';
         </div>
     </div>
 
-    <form action="/articles/store" method="POST" class="space-y-8">
+    <form action="/createarticle" method="POST" class="space-y-8">
         
         <div class="bg-paper/40 backdrop-blur-md border border-[#2c1810]/5 rounded-[2rem] p-8 md:p-16 shadow-2xl space-y-12">
             
