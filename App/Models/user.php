@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use PDO;
-class User {
+ class User {
     protected $conn;
     protected $table = "users";
 
@@ -19,28 +19,28 @@ class User {
     {
         $this->conn = $db;
     }
-    public function findByEmail($email){
-        $sql = "SELECT * FROM {$this->table} WHERE email = :email LIMIT 1";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':email' , $email);
-        $stmt->execute();
+    // public function findByEmail($email){
+    //     $sql = "SELECT * FROM {$this->table} WHERE email = :email LIMIT 1";
+    //     $stmt = $this->conn->prepare($sql);
+    //     $stmt->bindParam(':email' , $email);
+    //     $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-    public function create(){
-        $sql = "INSERT INTO {$this->table}
-        (first_name,last_name,email,passowrd)
-        VALUES (:first_name,:last_name,:email,:password)";
-        $stmt = $this->conn->prepare($sql);
-        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+    //     return $stmt->fetch(PDO::FETCH_ASSOC);
+    // }
+    // public function create(){
+    //     $sql = "INSERT INTO {$this->table}
+    //     (first_name,last_name,email,passowrd)
+    //     VALUES (:first_name,:last_name,:email,:password)";
+    //     $stmt = $this->conn->prepare($sql);
+    //     $this->password = password_hash($this->password, PASSWORD_DEFAULT);
 
-        $stmt->bindParam(':first_name', $this->first_name);
-        $stmt->bindParam(':last_name', $this->last_name);
-        $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':password', $this->password);
+    //     $stmt->bindParam(':first_name', $this->first_name);
+    //     $stmt->bindParam(':last_name', $this->last_name);
+    //     $stmt->bindParam(':email', $this->email);
+    //     $stmt->bindParam(':password', $this->password);
         
 
-        return $stmt->execute();
-    }
+    //     return $stmt->execute();
+    // }
     
 }
