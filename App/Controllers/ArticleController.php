@@ -3,8 +3,10 @@
 namespace App\Controllers;
 use App\Models\Article;
 
+use PDO;
 class ArticleController {
     private $conn;
+    protected $table = "articles";
 
     public function __construct($conn)
     {
@@ -23,9 +25,30 @@ class ArticleController {
             exit();
         }
     }
+
+     private function createArticle($article) {
+        $sql = "INSERT INTO {$this->table}
+        (id_user,title,content,create_at)
+        VALUES (:id_user,:title,:content,:create_at)";
+        $stmt = $this->conn->prepare($sql);
+        
+        $stmt->bindParam(':id_user', $article->id_user);
+        $stmt->bindParam(':title' , $article->title);
+        $stmt->bindParam(':content' , $article->content);
+        $stmt->bindParam(':create_at', $article->create_at);
+
+        return $stmt->execute();
+    }
+
+    private function getallarticles(){
+        $sql = "SELECT * FROM {$this->table}
+        ORDER BY create_at DESC";
+        $stmt = $this->conn->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     public function showarticles() {
-        $articlemodel = new Article($this->conn);
-        $articles = $articlemodel->getallarticles();
+        $articles = $this->getallarticles();
         require_once __DIR__ . '/../Views/Articles/allArticle.php';
     }
     public function  showeditarticle(){
@@ -52,7 +75,7 @@ class ArticleController {
         $article->content = $_POST['content'];
         $article->create_at = date('Y-m-d H:i:s');
 
-        if($article->createArticle()){
+        if($this->createArticle($article)){
             header('Location: /articles');
             exit();
         }
