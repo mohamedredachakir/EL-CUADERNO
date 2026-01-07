@@ -3,8 +3,7 @@
 namespace App\Models;
 
 
-class Reader {
-
+class Reader extends User {
 
 
 }

@@ -89,10 +89,11 @@ class ArticleController {
         $id = $_POST['id'];
         $title = $_POST['title'];
         $content = $_POST['content'];
+        $id_user = $_SESSION['user']['id'];
 
-        $sql = "UPDATE articles SET title = ?, content = ? WHERE id = ?";
+        $sql = "UPDATE articles SET title = ?, content = ? WHERE id = ? AND id_user = ?";
         $stmt = $conn->prepare($sql);
-        if($stmt->execute([$title,$content,$id])){
+        if($stmt->execute([$title,$content,$id,$id_user])){
             header('Location: /articles');
             exit();
         }
@@ -107,9 +108,10 @@ class ArticleController {
         $this->checkauth();
         $this->checkauthor();
         $id = $_POST['id'];
-        $sql = "DELETE FROM articles WHERE id = ?";
+        $id_user = $_SESSION['user']['id'];
+        $sql = "DELETE FROM articles WHERE id = ? AND id_user = ?";
         $stmt = $conn->prepare($sql);
-        if($stmt->execute([$id])){
+        if($stmt->execute([$id,$id_user])){
             header('Location: /articles');
             exit();
         }
