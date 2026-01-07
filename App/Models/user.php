@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use PDO;
- class User {
+ abstract class User {
     protected $conn;
     protected $table = "users";
 
