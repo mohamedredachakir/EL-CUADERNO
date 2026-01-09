@@ -1,10 +1,10 @@
 <?php
 
 class Database {
-    private static $host = "localhost";
+    private static $host = "db";
     private static $db_name = "el_cuaderno";
-    private static $user_name = "root";
-    private static $password = "197170";
+    private static $user_name = "user";
+    private static $password = "red123";
     private static $conn = null;
     
     public static function getconnection(){
