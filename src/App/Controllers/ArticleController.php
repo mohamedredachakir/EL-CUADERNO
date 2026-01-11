@@ -48,10 +48,30 @@ class ArticleController {
     }
     private function getallarticles(){
         $conn = Database::getconnection();
-        $sql = "SELECT * FROM {$this->table}
-        ORDER BY create_at DESC";
+        $sql = "SELECT * FROM {$this->table} ORDER BY create_at DESC";
         $stmt = $conn->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($articles as &$article) {
+        $stmtCat = $conn->prepare(
+            "SELECT c.name 
+             FROM categories c
+             JOIN article_categorie ac ON c.id = ac.id_categorie
+             WHERE ac.id_article = ?"
+        );
+        $stmtCat->execute([$article['id']]);
+        $article['categories'] = $stmtCat->fetchAll(PDO::FETCH_COLUMN); // array of names
+    }
+
+    return $articles;
+    }
+
+     private function fetchArticleById($id){
+        $conn = Database::getconnection();
+        $sql = 'SELECT * FROM articles WHERE id = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     
     public function showarticles() {
@@ -61,6 +81,8 @@ class ArticleController {
     public function  showeditarticle(){
         $this->checkauth();
         $this->checkauthor();
+        $id = $_GET['id'];
+        $article = $this->fetchArticleById($id);
         $categories = $this->getAllCategories();
         require_once __DIR__ . '/../Views/Articles/editArticle.php';
     }
@@ -113,7 +135,6 @@ class ArticleController {
         $title = $_POST['title'];
         $content = $_POST['content'];
         $id_user = $_SESSION['user']['id'];
-        $id_categorie = $_POST['id_categorie'];
         $sql = "UPDATE articles SET title = ?, content = ? WHERE id = ? AND id_user = ?";
         $stmt = $conn->prepare($sql);
         if($stmt->execute([$title,$content,$id,$id_user])){
